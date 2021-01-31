@@ -10,9 +10,22 @@ and brackets `[]`, as well as multi line comments between `/*` and `*/`.
 Installation
 ------------
 
-TBD
+Vim Plug
+```
+Plug 'lalanikarim/vim-simplefold'
+```
 
 Usage
 -----
 
-TBD
+To setup fold markers in a code file, run the following function in Normal mode
+
+```
+:call SimpleFold()
+```
+
+You can also map it to a keyboard shortcut:
+
+```
+:nnoremap <leader>f :call SimpleFold()<CR>
+```
