@@ -24,7 +24,7 @@ function! s:isValid(pos,last_pos)
 endfunction
 
 function! SimpleFold()
-  set foldexpr=SetFoldText()
+  set foldexpr=s:SetFoldText()
 	norm G
 	let l:count = 0
 	let l:iter = 1
