@@ -1,7 +1,16 @@
-" set number
-" set relativenumber
+function! s:setFoldText()
+  let line = getline(v:foldstart)
+  let line2 = trim(getline(v:foldstart + 1))
+  let last = trim(getline(v:foldend))
+  let sub = line 
+  if v:foldend - v:foldstart > 2 
+    let sub = sub . ' ' . line2
+  endif
+  let lines = v:foldend-v:foldstart + 1
+  return sub . ' ---(' . lines . ' lines)--- '.last   
+endfunction
 
-function s:isValid(pos,last_pos)
+function! s:isValid(pos,last_pos)
 	" echo "Comparing " . a:pos[1] . "," . a:pos[2] . " with " . a:last_pos[1] . "," . a:last_pos[2]
 	if a:pos[1] > a:last_pos[1]
 		return v:true
@@ -13,7 +22,8 @@ function s:isValid(pos,last_pos)
 	return v:false
 endfunction
 
-function SimpleFold()
+function! SimpleFold()
+  set foldtext=s:setFoldText()
 	norm G
 	let l:count = 0
 	let l:iter = 1
