@@ -24,7 +24,7 @@ function! s:isValid(pos,last_pos)
 endfunction
 
 function! SimpleFold()
-  set foldmethod=expr
+  " set foldmethod=expr
   set foldexpr=SetFoldText()
 	norm G
 	let l:count = 0
@@ -40,7 +40,9 @@ function! SimpleFold()
 		let l:found = getpos(".")
 		" echo "Found pair on " . l:found[1] . "," . l:found[2]
 		if l:found[1] > l:pos[1]
-			norm %v%zfzo
+			norm %v%v
+      norm :*fold
+      norm zo
 			let l:count = l:count + 1
 		endif
 		norm `m
