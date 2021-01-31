@@ -1,15 +1,16 @@
-function! SetFoldText()
-  let line = getline(v:foldstart)
-  let line2 = trim(getline(v:foldstart + 1))
-  let last = trim(getline(v:foldend))
-  let sub = line 
-  if v:foldend - v:foldstart > 2 
-    let sub = sub . ' ' . line2
-  endif
-  let lines = v:foldend-v:foldstart + 1
-  return sub . ' ---(' . lines . ' lines)--- '.last   
-endfunction
+" function! SetFoldText()
+"  let line = getline(v:foldstart)
+"  let line2 = trim(getline(v:foldstart + 1))
+"  let last = trim(getline(v:foldend))
+"  let sub = line 
+"  if v:foldend - v:foldstart > 2 
+"    let sub = sub . ' ' . line2
+"  endif
+"  let lines = v:foldend-v:foldstart + 1
+"  return sub . ' ---(' . lines . ' lines)--- '.last   
+"endfunction
 
+"set foldexpr=SetFoldText()
 
 function! s:isValid(pos,last_pos)
 	" echo "Comparing " . a:pos[1] . "," . a:pos[2] . " with " . a:last_pos[1] . "," . a:last_pos[2]
@@ -25,7 +26,6 @@ endfunction
 
 function! SimpleFold()
   " set foldmethod=expr
-  set foldexpr=SetFoldText()
 	norm G
 	let l:count = 0
 	let l:iter = 1
@@ -40,9 +40,7 @@ function! SimpleFold()
 		let l:found = getpos(".")
 		" echo "Found pair on " . l:found[1] . "," . l:found[2]
 		if l:found[1] > l:pos[1]
-			norm %v%v
-      norm *fold
-      norm zo
+			norm %v%zfzo
 			let l:count = l:count + 1
 		endif
 		norm `m
