@@ -1,4 +1,4 @@
-function! s:setFoldText()
+function! s:SetFoldText()
   let line = getline(v:foldstart)
   let line2 = trim(getline(v:foldstart + 1))
   let last = trim(getline(v:foldend))
@@ -9,6 +9,7 @@ function! s:setFoldText()
   let lines = v:foldend-v:foldstart + 1
   return sub . ' ---(' . lines . ' lines)--- '.last   
 endfunction
+
 
 function! s:isValid(pos,last_pos)
 	" echo "Comparing " . a:pos[1] . "," . a:pos[2] . " with " . a:last_pos[1] . "," . a:last_pos[2]
@@ -23,7 +24,7 @@ function! s:isValid(pos,last_pos)
 endfunction
 
 function! SimpleFold()
-  set foldtext=s:setFoldText()
+  set foldexpr=SetFoldText()
 	norm G
 	let l:count = 0
 	let l:iter = 1
