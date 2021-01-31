@@ -1,4 +1,4 @@
-function! s:SetFoldText()
+function! SetFoldText()
   let line = getline(v:foldstart)
   let line2 = trim(getline(v:foldstart + 1))
   let last = trim(getline(v:foldend))
@@ -24,7 +24,7 @@ function! s:isValid(pos,last_pos)
 endfunction
 
 function! SimpleFold()
-  set foldexpr=s:SetFoldText()
+  set foldexpr=SetFoldText()
 	norm G
 	let l:count = 0
 	let l:iter = 1
