@@ -41,7 +41,7 @@ function! SimpleFold()
 		" echo "Found pair on " . l:found[1] . "," . l:found[2]
 		if l:found[1] > l:pos[1]
 			norm %v%v
-      norm :*fold
+      norm *fold
       norm zo
 			let l:count = l:count + 1
 		endif
